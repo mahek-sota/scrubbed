@@ -1,0 +1,5 @@
+Method,Precision,Recall,F1 (overlap),F1 (exact),Partial leaks,Label agreement,Runtime / note
+Regex,96.5,42.9,59.4,59.4,0,100.0,0.1 ms
+Presidio,74.1,79.2,76.5,66.1,177,90.8,19.2 ms
+LLM (spans),77.9,79.7,78.8 ± 0.6,59.6,13,92.9,5.0 s
+"LLM (spans, temp 0)",77.3,80.1,78.7,60.0,11,93.5,5.2 s

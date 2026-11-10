@@ -1,0 +1,1790 @@
+{
+ "n_notes": 200,
+ "methods": [
+  "regex",
+  "presidio",
+  "llm"
+ ],
+ "n_gold": 2803,
+ "gold_by_category": {
+  "HOSPITAL": 266,
+  "NAME": 975,
+  "MRN": 200,
+  "DATE": 602,
+  "SSN": 51,
+  "ADDRESS": 133,
+  "CITY": 156,
+  "ZIP": 133,
+  "PHONE": 166,
+  "EMAIL": 84,
+  "AGE_OVER_89": 37
+ },
+ "overall": {
+  "regex": {
+   "exact": {
+    "precision": 0.9654895666131621,
+    "precision_sd": 0.0,
+    "recall": 0.4291830181947913,
+    "recall_sd": 0.0,
+    "f1": 0.5942207952580884,
+    "f1_sd": 0.0,
+    "partial": 0,
+    "label_accuracy": 1.0
+   },
+   "overlap": {
+    "precision": 0.9654895666131621,
+    "precision_sd": 0.0,
+    "recall": 0.4291830181947913,
+    "recall_sd": 0.0,
+    "f1": 0.5942207952580884,
+    "f1_sd": 0.0,
+    "partial": 0,
+    "label_accuracy": 1.0
+   }
+  },
+  "presidio": {
+   "exact": {
+    "precision": 0.6327462491846053,
+    "precision_sd": 0.0,
+    "recall": 0.6921155904388155,
+    "recall_sd": 0.0,
+    "f1": 0.6611006985857897,
+    "f1_sd": 0.0,
+    "partial": 0,
+    "label_accuracy": 0.9608247422680413
+   },
+   "overlap": {
+    "precision": 0.7407045009784736,
+    "precision_sd": 0.0,
+    "recall": 0.792008562254727,
+    "recall_sd": 0.0,
+    "f1": 0.7654978886107512,
+    "f1_sd": 0.0,
+    "partial": 177,
+    "label_accuracy": 0.9076576576576577
+   }
+  },
+  "llm": {
+   "exact": {
+    "precision": 0.6066283963867296,
+    "precision_sd": 0.008582855224588223,
+    "recall": 0.5866333690093948,
+    "recall_sd": 0.003237164368846752,
+    "f1": 0.5964376545080777,
+    "f1_sd": 0.0042187687681035195,
+    "partial": 0,
+    "label_accuracy": 0.9947280760883478
+   },
+   "overlap": {
+    "precision": 0.7785317832670434,
+    "precision_sd": 0.010704589226806999,
+    "recall": 0.7968842906409799,
+    "recall_sd": 0.005811293482159905,
+    "f1": 0.7875690390701889,
+    "f1_sd": 0.006172043700819372,
+    "partial": 12.666666666666666,
+    "label_accuracy": 0.9291049839941097
+   }
+  },
+  "llm_t0": {
+   "exact": {
+    "precision": 0.6045668720550924,
+    "precision_sd": 0.0,
+    "recall": 0.5950767035319301,
+    "recall_sd": 0.0,
+    "f1": 0.5997842502696872,
+    "f1_sd": 0.0,
+    "partial": 0,
+    "label_accuracy": 0.9958033573141487
+   },
+   "overlap": {
+    "precision": 0.7734686480608917,
+    "precision_sd": 0.0,
+    "recall": 0.8012843382090618,
+    "recall_sd": 0.0,
+    "f1": 0.7871308315533938,
+    "f1_sd": 0.0,
+    "partial": 11,
+    "label_accuracy": 0.9345503116651825
+   }
+  }
+ },
+ "by_category": {
+  "regex": {
+   "NAME": {
+    "n_gold": 975,
+    "precision": NaN,
+    "recall": 0.0,
+    "f1": 0.0,
+    "n_pred": 0
+   },
+   "DATE": {
+    "n_gold": 602,
+    "precision": 0.9333333333333333,
+    "recall": 1.0,
+    "f1": 0.9655172413793104,
+    "n_pred": 645
+   },
+   "AGE_OVER_89": {
+    "n_gold": 37,
+    "precision": NaN,
+    "recall": 0.0,
+    "f1": 0.0,
+    "n_pred": 0
+   },
+   "PHONE": {
+    "n_gold": 166,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "n_pred": 166
+   },
+   "EMAIL": {
+    "n_gold": 84,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "n_pred": 84
+   },
+   "MRN": {
+    "n_gold": 200,
+    "precision": 1.0,
+    "recall": 0.835,
+    "f1": 0.9100817438692098,
+    "n_pred": 167
+   },
+   "SSN": {
+    "n_gold": 51,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "n_pred": 51
+   },
+   "ADDRESS": {
+    "n_gold": 133,
+    "precision": NaN,
+    "recall": 0.0,
+    "f1": 0.0,
+    "n_pred": 0
+   },
+   "CITY": {
+    "n_gold": 156,
+    "precision": NaN,
+    "recall": 0.0,
+    "f1": 0.0,
+    "n_pred": 0
+   },
+   "ZIP": {
+    "n_gold": 133,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "n_pred": 133
+   },
+   "HOSPITAL": {
+    "n_gold": 266,
+    "precision": NaN,
+    "recall": 0.0,
+    "f1": 0.0,
+    "n_pred": 0
+   }
+  },
+  "presidio": {
+   "NAME": {
+    "n_gold": 975,
+    "precision": 0.8775322283609577,
+    "recall": 0.9087179487179488,
+    "f1": 0.8928528564728971,
+    "n_pred": 1086
+   },
+   "DATE": {
+    "n_gold": 602,
+    "precision": 0.5530035335689046,
+    "recall": 0.9102990033222591,
+    "f1": 0.6880307424477632,
+    "n_pred": 1132
+   },
+   "AGE_OVER_89": {
+    "n_gold": 37,
+    "precision": NaN,
+    "recall": 0.40540540540540543,
+    "f1": 0.0,
+    "n_pred": 0
+   },
+   "PHONE": {
+    "n_gold": 166,
+    "precision": 0.986013986013986,
+    "recall": 0.8493975903614458,
+    "f1": 0.912621359223301,
+    "n_pred": 143
+   },
+   "EMAIL": {
+    "n_gold": 84,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "n_pred": 84
+   },
+   "MRN": {
+    "n_gold": 200,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "n_pred": 187
+   },
+   "SSN": {
+    "n_gold": 51,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "n_pred": 62
+   },
+   "ADDRESS": {
+    "n_gold": 133,
+    "precision": NaN,
+    "recall": 0.5112781954887218,
+    "f1": 0.0,
+    "n_pred": 0
+   },
+   "CITY": {
+    "n_gold": 156,
+    "precision": 0.5837837837837838,
+    "recall": 0.967948717948718,
+    "f1": 0.7283120827099571,
+    "n_pred": 370
+   },
+   "ZIP": {
+    "n_gold": 133,
+    "precision": NaN,
+    "recall": 0.2706766917293233,
+    "f1": 0.0,
+    "n_pred": 0
+   },
+   "HOSPITAL": {
+    "n_gold": 266,
+    "precision": NaN,
+    "recall": 0.15037593984962405,
+    "f1": 0.0,
+    "n_pred": 0
+   },
+   "OTHER": {
+    "n_gold": 0,
+    "precision": 1.0,
+    "recall": NaN,
+    "f1": NaN,
+    "n_pred": 2
+   }
+  },
+  "llm": {
+   "NAME": {
+    "n_gold": 975,
+    "precision": 0.9756298256570333,
+    "recall": 0.6830769230769231,
+    "f1": 0.8034597471166076,
+    "n_pred": 681.3333333333334
+   },
+   "DATE": {
+    "n_gold": 602,
+    "precision": 0.5255791337934206,
+    "recall": 0.7153931339977851,
+    "f1": 0.6055175517390569,
+    "n_pred": 812.3333333333334
+   },
+   "AGE_OVER_89": {
+    "n_gold": 37,
+    "precision": 0.2142105803800719,
+    "recall": 0.6936936936936937,
+    "f1": 0.3273320114027599,
+    "n_pred": 121.33333333333333
+   },
+   "PHONE": {
+    "n_gold": 166,
+    "precision": 0.9221998308205205,
+    "recall": 0.9819277108433735,
+    "f1": 0.9495739616248199,
+    "n_pred": 186.66666666666666
+   },
+   "EMAIL": {
+    "n_gold": 84,
+    "precision": 0.996031746031746,
+    "recall": 0.996031746031746,
+    "f1": 0.996031746031746,
+    "n_pred": 84
+   },
+   "MRN": {
+    "n_gold": 200,
+    "precision": 0.8504566101357611,
+    "recall": 0.9883333333333333,
+    "f1": 0.913875812178291,
+    "n_pred": 220.66666666666666
+   },
+   "SSN": {
+    "n_gold": 51,
+    "precision": 0.7905486700007248,
+    "recall": 1.0,
+    "f1": 0.8789948077338107,
+    "n_pred": 65.66666666666667
+   },
+   "ADDRESS": {
+    "n_gold": 133,
+    "precision": 0.9855839276129131,
+    "recall": 1.0,
+    "f1": 0.99267227022473,
+    "n_pred": 160.66666666666666
+   },
+   "CITY": {
+    "n_gold": 156,
+    "precision": 0.9719121719121719,
+    "recall": 0.9572649572649573,
+    "f1": 0.9644173885861113,
+    "n_pred": 70
+   },
+   "ZIP": {
+    "n_gold": 133,
+    "precision": 0.9775189167662286,
+    "recall": 0.8721804511278195,
+    "f1": 0.9217559222733512,
+    "n_pred": 58.666666666666664
+   },
+   "HOSPITAL": {
+    "n_gold": 266,
+    "precision": 0.8734151967715633,
+    "recall": 0.818295739348371,
+    "f1": 0.844438665322803,
+    "n_pred": 249.66666666666666
+   }
+  },
+  "llm_t0": {
+   "NAME": {
+    "n_gold": 975,
+    "precision": 0.9851411589895989,
+    "recall": 0.681025641025641,
+    "f1": 0.805329201488708,
+    "n_pred": 673
+   },
+   "DATE": {
+    "n_gold": 602,
+    "precision": 0.5152582159624414,
+    "recall": 0.7358803986710963,
+    "f1": 0.6061173669266995,
+    "n_pred": 852
+   },
+   "AGE_OVER_89": {
+    "n_gold": 37,
+    "precision": 0.24390243902439024,
+    "recall": 0.8108108108108109,
+    "f1": 0.37500000000000006,
+    "n_pred": 123
+   },
+   "PHONE": {
+    "n_gold": 166,
+    "precision": 0.9770114942528736,
+    "recall": 0.9759036144578314,
+    "f1": 0.9764572401077862,
+    "n_pred": 174
+   },
+   "EMAIL": {
+    "n_gold": 84,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "n_pred": 84
+   },
+   "MRN": {
+    "n_gold": 200,
+    "precision": 0.8392857142857143,
+    "recall": 0.995,
+    "f1": 0.9105334890965733,
+    "n_pred": 224
+   },
+   "SSN": {
+    "n_gold": 51,
+    "precision": 0.6219512195121951,
+    "recall": 1.0,
+    "f1": 0.7669172932330827,
+    "n_pred": 82
+   },
+   "ADDRESS": {
+    "n_gold": 133,
+    "precision": 0.9937106918238994,
+    "recall": 0.9924812030075187,
+    "f1": 0.9930955668777678,
+    "n_pred": 159
+   },
+   "CITY": {
+    "n_gold": 156,
+    "precision": 0.9733333333333334,
+    "recall": 0.9551282051282052,
+    "f1": 0.964144838895537,
+    "n_pred": 75
+   },
+   "ZIP": {
+    "n_gold": 133,
+    "precision": 0.9692307692307692,
+    "recall": 0.8796992481203008,
+    "f1": 0.9222972972972973,
+    "n_pred": 65
+   },
+   "HOSPITAL": {
+    "n_gold": 266,
+    "precision": 0.8669354838709677,
+    "recall": 0.8082706766917294,
+    "f1": 0.8365758754863813,
+    "n_pred": 248
+   }
+  }
+ },
+ "by_category_exact": {
+  "regex": {
+   "NAME": {
+    "n_gold": 975,
+    "precision": NaN,
+    "recall": 0.0,
+    "f1": 0.0,
+    "n_pred": 0
+   },
+   "DATE": {
+    "n_gold": 602,
+    "precision": 0.9333333333333333,
+    "recall": 1.0,
+    "f1": 0.9655172413793104,
+    "n_pred": 645
+   },
+   "AGE_OVER_89": {
+    "n_gold": 37,
+    "precision": NaN,
+    "recall": 0.0,
+    "f1": 0.0,
+    "n_pred": 0
+   },
+   "PHONE": {
+    "n_gold": 166,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "n_pred": 166
+   },
+   "EMAIL": {
+    "n_gold": 84,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "n_pred": 84
+   },
+   "MRN": {
+    "n_gold": 200,
+    "precision": 1.0,
+    "recall": 0.835,
+    "f1": 0.9100817438692098,
+    "n_pred": 167
+   },
+   "SSN": {
+    "n_gold": 51,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "n_pred": 51
+   },
+   "ADDRESS": {
+    "n_gold": 133,
+    "precision": NaN,
+    "recall": 0.0,
+    "f1": 0.0,
+    "n_pred": 0
+   },
+   "CITY": {
+    "n_gold": 156,
+    "precision": NaN,
+    "recall": 0.0,
+    "f1": 0.0,
+    "n_pred": 0
+   },
+   "ZIP": {
+    "n_gold": 133,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "n_pred": 133
+   },
+   "HOSPITAL": {
+    "n_gold": 266,
+    "precision": NaN,
+    "recall": 0.0,
+    "f1": 0.0,
+    "n_pred": 0
+   }
+  },
+  "presidio": {
+   "NAME": {
+    "n_gold": 975,
+    "precision": 0.6988950276243094,
+    "recall": 0.7917948717948718,
+    "f1": 0.7424501890184914,
+    "n_pred": 1086
+   },
+   "DATE": {
+    "n_gold": 602,
+    "precision": 0.47614840989399293,
+    "recall": 0.8438538205980066,
+    "f1": 0.6087863271427205,
+    "n_pred": 1132
+   },
+   "AGE_OVER_89": {
+    "n_gold": 37,
+    "precision": NaN,
+    "recall": 0.0,
+    "f1": 0.0,
+    "n_pred": 0
+   },
+   "PHONE": {
+    "n_gold": 166,
+    "precision": 0.9790209790209791,
+    "recall": 0.8433734939759037,
+    "f1": 0.906148867313916,
+    "n_pred": 143
+   },
+   "EMAIL": {
+    "n_gold": 84,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "n_pred": 84
+   },
+   "MRN": {
+    "n_gold": 200,
+    "precision": 1.0,
+    "recall": 0.995,
+    "f1": 0.9974937343358395,
+    "n_pred": 187
+   },
+   "SSN": {
+    "n_gold": 51,
+    "precision": 1.0,
+    "recall": 0.9803921568627451,
+    "f1": 0.99009900990099,
+    "n_pred": 62
+   },
+   "ADDRESS": {
+    "n_gold": 133,
+    "precision": NaN,
+    "recall": 0.0,
+    "f1": 0.0,
+    "n_pred": 0
+   },
+   "CITY": {
+    "n_gold": 156,
+    "precision": 0.45135135135135135,
+    "recall": 0.967948717948718,
+    "f1": 0.6156343839261738,
+    "n_pred": 370
+   },
+   "ZIP": {
+    "n_gold": 133,
+    "precision": NaN,
+    "recall": 0.16541353383458646,
+    "f1": 0.0,
+    "n_pred": 0
+   },
+   "HOSPITAL": {
+    "n_gold": 266,
+    "precision": NaN,
+    "recall": 0.05263157894736842,
+    "f1": 0.0,
+    "n_pred": 0
+   },
+   "OTHER": {
+    "n_gold": 0,
+    "precision": 1.0,
+    "recall": NaN,
+    "f1": NaN,
+    "n_pred": 2
+   }
+  },
+  "llm": {
+   "NAME": {
+    "n_gold": 975,
+    "precision": 0.5020673852909671,
+    "recall": 0.3507692307692308,
+    "f1": 0.4129467036240148,
+    "n_pred": 681.3333333333334
+   },
+   "DATE": {
+    "n_gold": 602,
+    "precision": 0.502781586289749,
+    "recall": 0.6766334440753046,
+    "f1": 0.5764560319705635,
+    "n_pred": 812.3333333333334
+   },
+   "AGE_OVER_89": {
+    "n_gold": 37,
+    "precision": 0.14290647616379512,
+    "recall": 0.46846846846846846,
+    "f1": 0.2189814604768554,
+    "n_pred": 121.33333333333333
+   },
+   "PHONE": {
+    "n_gold": 166,
+    "precision": 0.906008981440016,
+    "recall": 0.9678714859437751,
+    "f1": 0.934340114213881,
+    "n_pred": 186.66666666666666
+   },
+   "EMAIL": {
+    "n_gold": 84,
+    "precision": 0.996031746031746,
+    "recall": 0.996031746031746,
+    "f1": 0.996031746031746,
+    "n_pred": 84
+   },
+   "MRN": {
+    "n_gold": 200,
+    "precision": 0.7640839853246035,
+    "recall": 0.8783333333333333,
+    "f1": 0.8168618684327381,
+    "n_pred": 220.66666666666666
+   },
+   "SSN": {
+    "n_gold": 51,
+    "precision": 0.7905486700007248,
+    "recall": 1.0,
+    "f1": 0.8789948077338107,
+    "n_pred": 65.66666666666667
+   },
+   "ADDRESS": {
+    "n_gold": 133,
+    "precision": 0.5871684802502413,
+    "recall": 0.6992481203007519,
+    "f1": 0.6383003004776137,
+    "n_pred": 160.66666666666666
+   },
+   "CITY": {
+    "n_gold": 156,
+    "precision": 0.9575952575952577,
+    "recall": 0.43803418803418803,
+    "f1": 0.6008962387049055,
+    "n_pred": 70
+   },
+   "ZIP": {
+    "n_gold": 133,
+    "precision": 0.4759259259259259,
+    "recall": 0.21052631578947367,
+    "f1": 0.2917171148807845,
+    "n_pred": 58.666666666666664
+   },
+   "HOSPITAL": {
+    "n_gold": 266,
+    "precision": 0.8734151967715633,
+    "recall": 0.8170426065162907,
+    "f1": 0.8437251272159524,
+    "n_pred": 249.66666666666666
+   }
+  },
+  "llm_t0": {
+   "NAME": {
+    "n_gold": 975,
+    "precision": 0.4888558692421991,
+    "recall": 0.3374358974358974,
+    "f1": 0.39927184466019416,
+    "n_pred": 673
+   },
+   "DATE": {
+    "n_gold": 602,
+    "precision": 0.49061032863849763,
+    "recall": 0.6943521594684385,
+    "f1": 0.5749656121045391,
+    "n_pred": 852
+   },
+   "AGE_OVER_89": {
+    "n_gold": 37,
+    "precision": 0.1951219512195122,
+    "recall": 0.6486486486486487,
+    "f1": 0.3,
+    "n_pred": 123
+   },
+   "PHONE": {
+    "n_gold": 166,
+    "precision": 0.9597701149425287,
+    "recall": 0.963855421686747,
+    "f1": 0.9618084302220943,
+    "n_pred": 174
+   },
+   "EMAIL": {
+    "n_gold": 84,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "n_pred": 84
+   },
+   "MRN": {
+    "n_gold": 200,
+    "precision": 0.78125,
+    "recall": 0.91,
+    "f1": 0.8407243163340724,
+    "n_pred": 224
+   },
+   "SSN": {
+    "n_gold": 51,
+    "precision": 0.6219512195121951,
+    "recall": 1.0,
+    "f1": 0.7669172932330827,
+    "n_pred": 82
+   },
+   "ADDRESS": {
+    "n_gold": 133,
+    "precision": 0.6289308176100629,
+    "recall": 0.7518796992481203,
+    "f1": 0.684931506849315,
+    "n_pred": 159
+   },
+   "CITY": {
+    "n_gold": 156,
+    "precision": 0.9733333333333334,
+    "recall": 0.46794871794871795,
+    "f1": 0.6320346320346321,
+    "n_pred": 75
+   },
+   "ZIP": {
+    "n_gold": 133,
+    "precision": 0.49230769230769234,
+    "recall": 0.24060150375939848,
+    "f1": 0.32323232323232326,
+    "n_pred": 65
+   },
+   "HOSPITAL": {
+    "n_gold": 266,
+    "precision": 0.8669354838709677,
+    "recall": 0.8082706766917294,
+    "f1": 0.8365758754863813,
+    "n_pred": 248
+   }
+  }
+ },
+ "runtime": {
+  "regex": {
+   "mean_s": 9.117498353589326e-05,
+   "median_s": 8.937448728829622e-05
+  },
+  "presidio": {
+   "mean_s": 0.019170832076924854,
+   "median_s": 0.01973304193234071
+  },
+  "llm": {
+   "mean_s": 4.954957212480755,
+   "median_s": 4.463410750031471
+  },
+  "llm_t0": {
+   "mean_s": 5.232171356837498,
+   "median_s": 4.657821416505612
+  }
+ },
+ "runs": {
+  "regex": 1,
+  "presidio": 1,
+  "llm": 3,
+  "llm_t0": 1
+ },
+ "top_missed": {
+  "regex": [
+   {
+    "category": "NAME",
+    "missed": 975,
+    "examples": [
+     "y Hospital of Tulsa  Patient: <<Alexander, Tracy>>    Med Rec #01962099 DOB: 04/",
+     "harge Date: May 24 Attending: <<Catherine Wilson>> MD  Principal Diagnosis: pulm",
+     "story of Present Illness: Ms. <<Alexander>> is a 30-year-old woman with a"
+    ]
+   },
+   {
+    "category": "HOSPITAL",
+    "missed": 266,
+    "examples": [
+     "DISCHARGE SUMMARY <<University Hospital of Tulsa>>  Patient: Alexander, Tracy   ",
+     "ow-up: with Dr. Mark Smith at <<Columbus General Hospital>> on Jun 15. Questions: call 47",
+     "<<University Hospital of Eugene>> 2022-12-02  Amanda Nelson, MD"
+    ]
+   },
+   {
+    "category": "CITY",
+    "missed": 156,
+    "examples": [
+     " Address: 53000 Wong Orchard, <<Durham>>, NC 27077  Discharge Medicati",
+     "Address: 83205 Summer Divide, <<Charleston>>, SC 29509  Dear Dr. Nelson,  ",
+     "77 Krista Mountains Apt. 787, <<Durham>>, NC 27796 Emergency contact: "
+    ]
+   },
+   {
+    "category": "ADDRESS",
+    "missed": 133,
+    "examples": [
+     "er Hanna.  Discharge Address: <<53000 Wong Orchard>>, Durham, NC 27077  Discharge ",
+     "/1953, MR#: 21097750 Address: <<83205 Summer Divide>>, Charleston, SC 29509  Dear D",
+     "    SSN: 476-06-9226 Address: <<5977 Krista Mountains Apt. 787>>, Durham, NC 27796 Emergency c"
+    ]
+   },
+   {
+    "category": "AGE_OVER_89",
+    "missed": 37,
+    "examples": [
+     "t: Lynn Torres (83352547)  S: <<102>> yo F seen for follow-up of Gr",
+     "ver and productive cough HPI: <<92>>-year-old woman brought in by ",
+     "nk you for seeing Ms. Hall, a <<95>>-year-old woman whom I am refe"
+    ]
+   },
+   {
+    "category": "MRN",
+    "missed": 33,
+    "examples": [
+     "Re: pt Lyons, Timothy, 45 yo, <<68874410>> Caller: Miles Lyons (son), ca",
+     "- 02/13/2019 Pt: Lynn Torres (<<83352547>>)  S: 102 yo F seen for follow",
+     " 2023 Pt: Jennifer Dickerson (<<10996734>>)  S: 20 yo F seen for follow-"
+    ]
+   }
+  ],
+  "presidio": [
+   {
+    "category": "HOSPITAL",
+    "missed": 226,
+    "examples": [
+     "DISCHARGE SUMMARY <<University Hospital of Tulsa>>  Patient: Alexander, Tracy   ",
+     "ow-up: with Dr. Mark Smith at <<Columbus General Hospital>> on Jun 15. Questions: call 47",
+     "<<University Hospital of Eugene>> 2022-12-02  Amanda Nelson, MD"
+    ]
+   },
+   {
+    "category": "ZIP",
+    "missed": 97,
+    "examples": [
+     "3000 Wong Orchard, Durham, NC <<27077>>  Discharge Medications: - ome",
+     "Summer Divide, Charleston, SC <<29509>>  Dear Dr. Nelson,  Thank you ",
+     "las 425 Le Common, Peoria, IL <<60444>> MRN: 5009296  Dear Ms. Dougla"
+    ]
+   },
+   {
+    "category": "NAME",
+    "missed": 89,
+    "examples": [
+     "r if worse. Will route to Dr. <<Love>>.  Taken by: Chase, RN",
+     "route to Dr. Love.  Taken by: <<Chase>>, RN",
+     " in Knoxville with her sister <<Ivy>>. Diagnosed with atrial fibril"
+    ]
+   },
+   {
+    "category": "ADDRESS",
+    "missed": 65,
+    "examples": [
+     "    SSN: 476-06-9226 Address: <<5977 Krista Mountains Apt. 787>>, Durham, NC 27796 Emergency c",
+     "te: 12/29 To: Sabrina Douglas <<425 Le Common>>, Peoria, IL 60444 MRN: 500929",
+     " Ramirez.  Discharge Address: <<20922 Jennifer Extension Apt. 012>>, Odessa, TX 79373  Discharge "
+    ]
+   },
+   {
+    "category": "DATE",
+    "missed": 54,
+    "examples": [
+     ": 548-20-8186 Admission Date: <<Sep 9>>    Discharge Date: 9/13 Atten",
+     "e left upper extremity. Labs (<<2/7>>): WBC 8.6, Hgb 12.0, Plt 272,",
+     "ngton Regional Medical Center <<Dec 6>>  Ivy Jackson MD Department of"
+    ]
+   },
+   {
+    "category": "PHONE",
+    "missed": 25,
+    "examples": [
+     " 1.01.  She can be reached at <<+1 555 412 2768>> or by email at jamie.strong18",
+     "r 2.12.  He can be reached at <<+1 594 626 4469>> or by email at anthonyrich47@",
+     "n 2020-07-25. Questions: call <<+1 340 797 2240>>.  Electronically signed by Dr"
+    ]
+   },
+   {
+    "category": "AGE_OVER_89",
+    "missed": 22,
+    "examples": [
+     "t: Lynn Torres (83352547)  S: <<102>> yo F seen for follow-up of Gr",
+     "Mar-2021 Re: pt floyd, molly, <<100>> yo, MRN 84742743 Caller: pati",
+     " 2019 Re: pt green, brittany, <<91>> yo, Medical Record Number: 96"
+    ]
+   },
+   {
+    "category": "CITY",
+    "missed": 5,
+    "examples": [
+     "ess: 105 Brown Dam Suite 544, <<Mobile>>, AL 36645 Emergency contact: ",
+     "ddress: 86337 Flowers Stream, <<Lincoln>>, NE 68059-0389 Emergency cont",
+     "isit, sleeping well. Lives in <<Lincoln>> with her husband Hunter. Diag"
+    ]
+   }
+  ],
+  "llm": [
+   {
+    "category": "NAME",
+    "missed": 311,
+    "examples": [
+     "story of Present Illness: Ms. <<Alexander>> is a 30-year-old woman with a",
+     "n 2006.  Hospital Course: Ms. <<Alexander>> was admitted for pulmonary em",
+     "es daily  Follow-up: with Dr. <<Mark Smith>> at Columbus General Hospital "
+    ]
+   },
+   {
+    "category": "DATE",
+    "missed": 169,
+    "examples": [
+     "SN: 008129540 Admission Date: <<2019-05-22>>    Discharge Date: May 24 Att",
+     "2019-05-22    Discharge Date: <<May 24>> Attending: Catherine Wilson M",
+     " Columbus General Hospital on <<Jun 15>>. Questions: call 477.770.1033"
+    ]
+   },
+   {
+    "category": "HOSPITAL",
+    "missed": 44,
+    "examples": [
+     "DISCHARGE SUMMARY <<Eugene Regional Medical Center>>  Patient: Hill, Robin    MRN:",
+     "DISCHARGE SUMMARY <<Hartford General Hospital>>  Patient: Combs, Dawn    Med ",
+     "ow-up: with Dr. Craig Case at <<Edwards Memorial Hospital>> on 2020-07-25. Questions: cal"
+    ]
+   },
+   {
+    "category": "ZIP",
+    "missed": 15,
+    "examples": [
+     "urnpike Suite 169, Fresno, CA <<94597>> Emergency contact: Hope Rhode",
+     "185 Love Overpass, Albany, NY <<14340>> Emergency contact: Dawn Russe",
+     "19 Cook Wall, Springfield, IL <<61139>> MR#: 72325287  Dear Mr. Lawre"
+    ]
+   },
+   {
+    "category": "AGE_OVER_89",
+    "missed": 10,
+    "examples": [
+     "t: Lynn Torres (83352547)  S: <<102>> yo F seen for follow-up of Gr",
+     "ver and productive cough HPI: <<92>>-year-old woman brought in by ",
+     "nk you for seeing Ms. Hall, a <<95>>-year-old woman whom I am refe"
+    ]
+   },
+   {
+    "category": "CITY",
+    "missed": 9,
+    "examples": [
+     "780 Scott Turnpike Suite 169, <<Fresno>>, CA 94597 Emergency contact: ",
+     "niel Lawrence 4119 Cook Wall, <<Springfield>>, IL 61139 MR#: 72325287  Dear",
+     "dress: 554 Williams Mountain, <<Pueblo>>, CO 81218 Emergency contact: "
+    ]
+   },
+   {
+    "category": "PHONE",
+    "missed": 2,
+    "examples": [
+     "ns, please call our office at <<(225) 974-0619>>.  Sincerely, Patrick, RN, on ",
+     "r on 5/23/20. Questions: call <<(773) 781-3152>>.  Electronically signed by Dr"
+    ]
+   },
+   {
+    "category": "MRN",
+    "missed": 2,
+    "examples": [
+     "liams, rusty, 41 yo, Med Rec #<<10427867>> Caller: laura williams (wife)",
+     " duffy, DOB 17-Jul-1927, MR#: <<15274695>> Address: 290 Perez Brook, Fre"
+    ]
+   }
+  ]
+ },
+ "slices": [
+  {
+   "slice": "NAME: common-word (Hope, Will, Rose...)",
+   "n": 318,
+   "regex": 0.0,
+   "presidio": 0.8018867924528302,
+   "llm": 0.710691823899371
+  },
+  {
+   "slice": "NAME: lowercase",
+   "n": 86,
+   "regex": 0.0,
+   "presidio": 0.7674418604651163,
+   "llm": 0.5697674418604651
+  },
+  {
+   "slice": "NAME: other",
+   "n": 595,
+   "regex": 0.0,
+   "presidio": 0.9680672268907563,
+   "llm": 0.6840336134453782
+  },
+  {
+   "slice": "NAME: patient",
+   "n": 367,
+   "regex": 0.0,
+   "presidio": 0.8801089918256131,
+   "llm": 0.6267029972752044
+  },
+  {
+   "slice": "NAME: relative",
+   "n": 175,
+   "regex": 0.0,
+   "presidio": 0.9085714285714286,
+   "llm": 0.7085714285714285
+  },
+  {
+   "slice": "NAME: clinician",
+   "n": 433,
+   "regex": 0.0,
+   "presidio": 0.9330254041570438,
+   "llm": 0.7159353348729792
+  },
+  {
+   "slice": "MRN: labeled",
+   "n": 167,
+   "regex": 1.0,
+   "presidio": 1.0,
+   "llm": 0.9880239520958084
+  },
+  {
+   "slice": "MRN: unlabeled",
+   "n": 33,
+   "regex": 0.0,
+   "presidio": 1.0,
+   "llm": 1.0
+  },
+  {
+   "slice": "DATE: no year (Mar 4, 3/4)",
+   "n": 162,
+   "regex": 1.0,
+   "presidio": 0.6666666666666666,
+   "llm": 0.5617283950617284
+  }
+ ],
+ "false_positive_examples": {
+  "regex": [
+   [
+    [
+     "DATE",
+     "4/5"
+    ],
+    22
+   ],
+   [
+    [
+     "DATE",
+     "5/5"
+    ],
+    21
+   ]
+  ],
+  "presidio": [
+   [
+    [
+     "DATE",
+     "daily"
+    ],
+    134
+   ],
+   [
+    [
+     "CITY",
+     "MD"
+    ],
+    73
+   ],
+   [
+    [
+     "NAME",
+     "ED"
+    ],
+    48
+   ],
+   [
+    [
+     "DATE",
+     "3 months"
+    ],
+    34
+   ],
+   [
+    [
+     "NAME",
+     "SpO2"
+    ],
+    33
+   ],
+   [
+    [
+     "CITY",
+     "RN"
+    ],
+    30
+   ],
+   [
+    [
+     "DATE",
+     "nightly"
+    ],
+    26
+   ],
+   [
+    [
+     "DATE",
+     "3 days"
+    ],
+    19
+   ],
+   [
+    [
+     "DATE",
+     "48 hours"
+    ],
+    17
+   ],
+   [
+    [
+     "DATE",
+     "5 days"
+    ],
+    16
+   ]
+  ],
+  "llm": [
+   [
+    [
+     "DATE",
+     "asthma"
+    ],
+    9
+   ],
+   [
+    [
+     "DATE",
+     "Raynaud phenomenon"
+    ],
+    8
+   ],
+   [
+    [
+     "DATE",
+     "atrial fibrillation"
+    ],
+    8
+   ],
+   [
+    [
+     "DATE",
+     "2013"
+    ],
+    7
+   ],
+   [
+    [
+     "DATE",
+     "amlodipine 5 mg daily"
+    ],
+    7
+   ],
+   [
+    [
+     "DATE",
+     "major depressive disorder"
+    ],
+    7
+   ],
+   [
+    [
+     "DATE",
+     "Down syndrome"
+    ],
+    6
+   ],
+   [
+    [
+     "DATE",
+     "carbidopa-levodopa 25/100 mg three times daily"
+    ],
+    6
+   ],
+   [
+    [
+     "DATE",
+     "sertraline 50 mg daily"
+    ],
+    6
+   ],
+   [
+    [
+     "DATE",
+     "Parkinson's disease"
+    ],
+    6
+   ]
+  ]
+ },
+ "traps": {
+  "regex": {
+   "n_terms": 190,
+   "hit_rate": 0.0,
+   "top_terms": [],
+   "examples": []
+  },
+  "presidio": {
+   "n_terms": 190,
+   "hit_rate": 0.32105263157894737,
+   "top_terms": [
+    [
+     "Cushing syndrome",
+     14
+    ],
+    [
+     "Foley catheter",
+     12
+    ],
+    [
+     "Guillain-Barre syndrome",
+     10
+    ],
+    [
+     "Glasgow Coma Scale",
+     10
+    ],
+    [
+     "Hashimoto's thyroiditis",
+     8
+    ],
+    [
+     "Hodgkin lymphoma",
+     3
+    ],
+    [
+     "Addison's disease",
+     2
+    ],
+    [
+     "Crohn's disease",
+     2
+    ]
+   ],
+   "examples": [
+    "Foley catheter -> ['Foley'] as ['NAME']",
+    "Guillain-Barre syndrome -> ['Guillain-Barre'] as ['NAME']",
+    "Hashimoto's thyroiditis -> ['Hashimoto'] as ['NAME']",
+    "Guillain-Barre syndrome -> ['Guillain-Barre'] as ['NAME']",
+    "Addison's disease -> ['Addison'] as ['NAME']"
+   ]
+  },
+  "llm": {
+   "n_terms": 190,
+   "hit_rate": 0.21578947368421053,
+   "top_terms": [
+    [
+     "Raynaud phenomenon",
+     18
+    ],
+    [
+     "Down syndrome",
+     13
+    ],
+    [
+     "Parkinson's disease",
+     13
+    ],
+    [
+     "Bell's palsy",
+     11
+    ],
+    [
+     "Guillain-Barre syndrome",
+     9
+    ],
+    [
+     "Crohn's disease",
+     9
+    ],
+    [
+     "Murphy's sign",
+     8
+    ],
+    [
+     "Graves' disease",
+     8
+    ]
+   ],
+   "examples": [
+    "Raynaud phenomenon -> ['Raynaud phenomenon'] as ['DATE']",
+    "Raynaud phenomenon -> ['Raynaud phenomenon'] as ['DATE']",
+    "Down syndrome -> ['Down syndrome'] as ['DATE']",
+    "Raynaud phenomenon -> ['Raynaud phenomenon'] as ['DATE']",
+    "Addison's disease -> [\"Addison's disease\"] as ['DATE']"
+   ]
+  },
+  "llm_t0": {
+   "n_terms": 190,
+   "hit_rate": 0.24210526315789474,
+   "top_terms": [
+    [
+     "Raynaud phenomenon",
+     7
+    ],
+    [
+     "Down syndrome",
+     6
+    ],
+    [
+     "Parkinson's disease",
+     5
+    ],
+    [
+     "Addison's disease",
+     4
+    ],
+    [
+     "Cushing syndrome",
+     4
+    ],
+    [
+     "Bell's palsy",
+     4
+    ],
+    [
+     "Guillain-Barre syndrome",
+     3
+    ],
+    [
+     "Alzheimer's disease",
+     3
+    ]
+   ],
+   "examples": [
+    "Raynaud phenomenon -> ['Raynaud phenomenon'] as ['DATE']",
+    "Raynaud phenomenon -> ['Raynaud phenomenon'] as ['DATE']",
+    "Addison's disease -> [\"Addison's disease\"] as ['DATE']",
+    "Parkinson's disease -> [\"Parkinson's disease\"] as ['DATE']",
+    "Cushing syndrome -> ['Cushing syndrome'] as ['DATE']"
+   ]
+  }
+ },
+ "llm_consistency": {
+  "runs": 3,
+  "identical_notes": 17,
+  "n_notes": 200,
+  "mean_pairwise_jaccard": 0.6735134224340679,
+  "gold_found_in_k_runs": {
+   "0": 353,
+   "1": 203,
+   "2": 243,
+   "3": 2004
+  },
+  "failures_by_run": {
+   "0": {
+    "timeout": 0,
+    "http_error": 0,
+    "too_long": 0,
+    "invalid_json": 0,
+    "output_truncated": 0,
+    "not_in_note": 16,
+    "bad_category": 0
+   },
+   "1": {
+    "timeout": 0,
+    "http_error": 0,
+    "too_long": 0,
+    "invalid_json": 0,
+    "output_truncated": 0,
+    "not_in_note": 17,
+    "bad_category": 0
+   },
+   "2": {
+    "timeout": 0,
+    "http_error": 0,
+    "too_long": 0,
+    "invalid_json": 0,
+    "output_truncated": 0,
+    "not_in_note": 29,
+    "bad_category": 0
+   }
+  },
+  "notes_with_call_or_json_failure": {
+   "0": 0,
+   "1": 0,
+   "2": 0
+  },
+  "not_in_note_examples": [
+   "andrea, white",
+   "06/28/20",
+   "11/9/2023",
+   "225-974-0619",
+   "0.7",
+   "3/26",
+   "8/25",
+   "2023-02-24",
+   "83173",
+   "419-290-8720"
+  ],
+  "max_prompt_tokens": 781
+ },
+ "name_expansion": {
+  "f1": 0.7875690390701889,
+  "f1_expanded": 0.8282655599636899,
+  "name_recall": 0.6830769230769231,
+  "name_recall_expanded": 0.8841025641025642,
+  "trap_hits": 41,
+  "trap_hits_expanded": 41
+ },
+ "llm_t0_consistency": {
+  "runs": 1,
+  "identical_notes": 200,
+  "n_notes": 200,
+  "mean_pairwise_jaccard": NaN,
+  "gold_found_in_k_runs": {
+   "0": 557,
+   "1": 2246
+  },
+  "failures_by_run": {
+   "0": {
+    "timeout": 0,
+    "http_error": 0,
+    "too_long": 0,
+    "invalid_json": 1,
+    "output_truncated": 1,
+    "not_in_note": 10,
+    "bad_category": 0
+   }
+  },
+  "notes_with_call_or_json_failure": {
+   "0": 1
+  },
+  "not_in_note_examples": [
+   "andrea, white",
+   "06/28/20",
+   "252-853-5246",
+   "1. CKD stage 3 - continue insulin glargine 20 units.",
+   "7/22",
+   "December 28",
+   "8/25",
+   "521-868-9658",
+   "43",
+   "Moody, Amanda"
+  ],
+  "max_prompt_tokens": 781
+ },
+ "rewrite": {
+  "all_caps_notes": 7,
+  "runtime_mean_s": 5.50409281146538,
+  "failures": {},
+  "approx_recall": 0.6111309311452016,
+  "by_category": {
+   "NAME": 0.6543589743589744,
+   "DATE": 0.36544850498338866,
+   "AGE_OVER_89": 0.4054054054054054,
+   "PHONE": 0.5963855421686747,
+   "EMAIL": 0.8571428571428572,
+   "MRN": 0.9299999999999999,
+   "SSN": 0.9607843137254902,
+   "ADDRESS": 0.8045112781954887,
+   "CITY": 0.8012820512820513,
+   "ZIP": 0.8045112781954887,
+   "HOSPITAL": 0.3571428571428571
+  }
+ },
+ "integrity": {
+  "regex": {
+   "n": 200,
+   "changed": 0.215,
+   "substantive_changed": 0.215,
+   "numbers_changed": 0.215,
+   "meds_changed": 0.0,
+   "dropped_per_note": 0.215,
+   "inserted_per_note": 0,
+   "top_dropped": [
+    [
+     "4/5",
+     22
+    ],
+    [
+     "5/5",
+     21
+    ]
+   ],
+   "examples": [
+    {
+     "note_id": "note_0003",
+     "diff": "room air Exam strength 5/5 in the left upper  ->  room air Exam strength in the left upper"
+    },
+    {
+     "note_id": "note_0007",
+     "diff": "room air Exam strength 5/5 in the left upper  ->  room air Exam strength in the left upper"
+    },
+    {
+     "note_id": "note_0013",
+     "diff": "room air Exam strength 5/5 in the left upper  ->  room air Exam strength in the left upper"
+    },
+    {
+     "note_id": "note_0015",
+     "diff": "for IV antibiotics strength 4/5 in the left upper  ->  for IV antibiotics strength in the left upper"
+    },
+    {
+     "note_id": "note_0019",
+     "diff": "room air Exam strength 5/5 in the left upper  ->  room air Exam strength in the left upper"
+    },
+    {
+     "note_id": "note_0027",
+     "diff": "hospital day 3 strength 4/5 in the left upper  ->  hospital day 3 strength in the left upper"
+    }
+   ]
+  },
+  "presidio": {
+   "n": 200,
+   "changed": 0.92,
+   "substantive_changed": 0.875,
+   "numbers_changed": 0.665,
+   "meds_changed": 0.0,
+   "dropped_per_note": 6.595,
+   "inserted_per_note": 0.06,
+   "top_dropped": [
+    [
+     "daily",
+     134
+    ],
+    [
+     "MD",
+     102
+    ],
+    [
+     "year",
+     100
+    ],
+    [
+     "old",
+     100
+    ],
+    [
+     "3",
+     66
+    ],
+    [
+     "HR",
+     54
+    ],
+    [
+     "ED",
+     48
+    ],
+    [
+     "days",
+     35
+    ],
+    [
+     "months",
+     34
+    ],
+    [
+     "SpO2",
+     33
+    ],
+    [
+     "RN",
+     30
+    ],
+    [
+     "nightly",
+     26
+    ]
+   ],
+   "examples": [
+    {
+     "note_id": "note_0000",
+     "diff": "DOB Age 30 SSN Admission Date Discharge Date Attending  ->  DOB Age 30 SSN Date Discharge Date Attending"
+    },
+    {
+     "note_id": "note_0001",
+     "diff": "Diagnosed with asthma in 2013 O BP 135/92 HR  ->  Diagnosed with asthma in O RR 16 T"
+    },
+    {
+     "note_id": "note_0002",
+     "diff": "for seeing Ms a 69 year old woman whom I am  ->  for seeing Ms a woman whom I am"
+    },
+    {
+     "note_id": "note_0003",
+     "diff": "CC abdominal pain HPI 10 year old boy brought in by  ->  CC abdominal pain HPI boy brought in by"
+    },
+    {
+     "note_id": "note_0006",
+     "diff": "Date Discharge Date Attending MD Principal Diagnosis pyelonephritis History  ->  9 Discharge Date Attending Principal Diagnosis pyelonephritis History"
+    },
+    {
+     "note_id": "note_0007",
+     "diff": "with atrial fibrillation in 2013 O BP 117/82 HR  ->  with atrial fibrillation in O RR 22 T"
+    }
+   ]
+  },
+  "llm": {
+   "n": 200,
+   "changed": 0.945,
+   "substantive_changed": 0.835,
+   "numbers_changed": 0.545,
+   "meds_changed": 0.3,
+   "dropped_per_note": 10.365,
+   "inserted_per_note": 0.005,
+   "top_dropped": [
+    [
+     "Dr",
+     124
+    ],
+    [
+     "mg",
+     121
+    ],
+    [
+     "MD",
+     113
+    ],
+    [
+     "daily",
+     91
+    ],
+    [
+     "RN",
+     54
+    ],
+    [
+     "yo",
+     35
+    ],
+    [
+     "twice",
+     33
+    ],
+    [
+     "5",
+     26
+    ],
+    [
+     "40",
+     24
+    ],
+    [
+     "disease",
+     21
+    ],
+    [
+     "MRN",
+     20
+    ],
+    [
+     "nightly",
+     17
+    ]
+   ],
+   "examples": [
+    {
+     "note_id": "note_0001",
+     "diff": "NOTE Pt MRN S 51 yo F seen for follow up  ->  NOTE Pt MRN S seen for follow up"
+    },
+    {
+     "note_id": "note_0005",
+     "diff": "TELEPHONE ENCOUNTER Re pt 45 yo Caller son callback Msg  ->  TELEPHONE ENCOUNTER Re pt Caller Miles Lyons son"
+    },
+    {
+     "note_id": "note_0006",
+     "diff": "Patient MRN DOB Age 50 SSN Admission Date Discharge  ->  Patient MRN DOB Age SSN Admission Date Discharge"
+    },
+    {
+     "note_id": "note_0007",
+     "diff": "with atrial fibrillation in 2013 O BP 117/82 HR  ->  with atrial fibrillation in O BP 117/82 HR"
+    },
+    {
+     "note_id": "note_0008",
+     "diff": "MD Department of Endocrinology Re  ->  Department of Endocrinology Re"
+    },
+    {
+     "note_id": "note_0009",
+     "diff": "Record Number SSN Address AL Emergency contact son CC  ->  Record Number SSN Address Emergency contact son CC"
+    }
+   ]
+  },
+  "llm_rewrite": {
+   "n": 200,
+   "changed": 0.78,
+   "substantive_changed": 0.745,
+   "numbers_changed": 0.12,
+   "meds_changed": 0.02,
+   "dropped_per_note": 4.245,
+   "inserted_per_note": 3.045,
+   "top_dropped": [
+    [
+     "Date",
+     33
+    ],
+    [
+     "Mr",
+     29
+    ],
+    [
+     "Ms",
+     24
+    ],
+    [
+     "yo",
+     24
+    ],
+    [
+     "Your",
+     20
+    ],
+    [
+     "Medical",
+     19
+    ],
+    [
+     "Record",
+     19
+    ],
+    [
+     "Number",
+     19
+    ],
+    [
+     "To",
+     15
+    ],
+    [
+     "of",
+     15
+    ],
+    [
+     "Address",
+     15
+    ],
+    [
+     "Med",
+     15
+    ]
+   ],
+   "examples": [
+    {
+     "note_id": "note_0001",
+     "diff": "PROGRESS NOTE Pt MRN S 51 yo F  ->  PROGRESS NOTE 2/23 Pt S 51 yo F"
+    },
+    {
+     "note_id": "note_0002",
+     "diff": "Re DOB MR Address SC Dear Dr Thank you  ->  04/21/1953 MR 21097750 Address Dear Dr Nelson Thank"
+    },
+    {
+     "note_id": "note_0005",
+     "diff": "TELEPHONE ENCOUNTER Re pt 45 yo Caller son callback Msg  ->  TELEPHONE ENCOUNTER Re pt Caller son callback Msg"
+    },
+    {
+     "note_id": "note_0006",
+     "diff": "Patient MRN DOB Age 50 SSN Admission Date Discharge  ->  Patient MRN DOB Age SSN Admission Date Discharge"
+    },
+    {
+     "note_id": "note_0029",
+     "diff": "TELEPHONE ENCOUNTER Re pt 23 yo Med Rec Caller patient callback Msg  ->  TELEPHONE ENCOUNTER Re pt Caller patient callback Msg"
+    },
+    {
+     "note_id": "note_0035",
+     "diff": "TELEPHONE ENCOUNTER Re pt 25 yo Caller wife callback Msg  ->  TELEPHONE ENCOUNTER Re pt Caller Roberts callback Msg"
+    }
+   ]
+  }
+ },
+ "charts": [
+  "recall_by_category.png",
+  "overall_prf.png",
+  "integrity.png"
+ ]
+}
