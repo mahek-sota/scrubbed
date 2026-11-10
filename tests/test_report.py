@@ -33,6 +33,7 @@ def test_page_structure(page):
     assert ids == [
         "summary",
         "input",
+        "design",
         "accuracy",
         "blind-spots",
         "consistency",
@@ -42,7 +43,7 @@ def test_page_structure(page):
     ]
     nav = re.findall(r'<a href="#([^"]+)"', page)
     assert nav == ids  # every section is in the nav, in order
-    assert page.count('<p class="takeaway">') == 7  # one headline per results section
+    assert page.count('<p class="takeaway">') == 8  # one headline per results section
 
 
 def test_page_is_self_contained(page):
@@ -82,3 +83,11 @@ def test_input_section_shows_note_and_answer(page):
     sec = page.split('<section id="input">')[1].split("</section>")[0]
     assert "Input note" in sec and "Correct output" in sec
     assert 'class="gold"' in sec and '<span class="tag">[NAME]</span>' in sec
+
+
+def test_design_diagram_is_accessible_and_self_contained(page):
+    sec = page.split('<section id="design">')[1].split("</section>")[0]
+    svg = sec.split("<svg")[1].split("</svg>")[0]
+    assert 'role="img"' in svg and "aria-label=" in svg and "<figcaption>" in sec
+    assert "<script" not in svg and "<style" not in svg and "foreignObject" not in svg
+    assert "answer key" in svg.lower()

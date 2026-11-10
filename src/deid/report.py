@@ -257,6 +257,135 @@ def input_section(notes: list[dict]) -> str:
 </section>"""
 
 
+# --------------------------------------------------------------------------- diagram
+
+
+def _box(x: int, y: int, w: int, h: int, title: str, sub: str = "", bar: str = "") -> str:
+    """A component box: title and optional subtitle, centered; optional colored left bar."""
+    cx = x + w / 2
+    ty = y + h / 2 + (-7 if sub else 4)
+    out = [
+        f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="10" '
+        'style="fill:var(--card);stroke:var(--line);stroke-width:1.5"/>'
+    ]
+    if bar:
+        out.append(
+            f'<rect x="{x}" y="{y + 10}" width="4" height="{h - 20}" rx="2" style="fill:var(--c-{bar})"/>'
+        )
+    out.append(
+        f'<text x="{cx}" y="{ty}" text-anchor="middle" font-size="13" font-weight="650" fill="currentColor">{_e(title)}</text>'
+    )
+    if sub:
+        out.append(
+            f'<text x="{cx}" y="{ty + 17}" text-anchor="middle" font-size="11" style="fill:var(--ink2)">{_e(sub)}</text>'
+        )
+    return "".join(out)
+
+
+def _arrow(d: str, label: str = "", lx: float = 0, ly: float = 0, accent: bool = False) -> str:
+    color = "var(--accent)" if accent else "var(--ink3)"
+    marker = "arr-accent" if accent else "arr"
+    out = f'<path d="{d}" fill="none" style="stroke:{color}" stroke-width="1.6" marker-end="url(#{marker})"/>'
+    if label:
+        weight = ' font-weight="600"' if accent else ""
+        out += (
+            f'<text x="{lx}" y="{ly}" text-anchor="middle" font-size="11"{weight} '
+            f'style="fill:{"var(--accent)" if accent else "var(--ink2)"}">{_e(label)}</text>'
+        )
+    return out
+
+
+def pipeline_diagram() -> str:
+    """Inline SVG of the pipeline. The point it makes: methods only see note text, the answer
+    key goes straight to scoring, the LLM returns text that code locates, and the rewrite
+    variant has no spans. Everything sits inside one machine."""
+    parts = [
+        "<defs>",
+        '<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">'
+        '<path d="M0,0 L10,5 L0,10 z" style="fill:var(--ink3)"/></marker>',
+        '<marker id="arr-accent" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">'
+        '<path d="M0,0 L10,5 L0,10 z" style="fill:var(--accent)"/></marker>',
+        "</defs>",
+        # The machine boundary.
+        '<rect x="10" y="10" width="1080" height="370" rx="16" fill="none" '
+        'style="stroke:var(--ink3)" stroke-width="1.2" stroke-dasharray="6 5"/>',
+        '<text x="30" y="36" font-size="12" font-weight="600" letter-spacing=".04em" '
+        'style="fill:var(--ink3)">ONE LAPTOP · NO NETWORK CALLS</text>',
+        # Data generation.
+        _box(30, 180, 150, 84, "Note generator", "Faker + 6 templates"),
+        _box(220, 100, 140, 56, "Note text", "200 notes"),
+        _box(220, 310, 140, 56, "Answer key", "2,803 positions"),
+        _arrow("M180,210 H198 V128 H218"),
+        _arrow("M180,234 H198 V338 H218"),
+        # The four methods, fed the same text from one bus.
+        '<path d="M360,128 H390 M390,86 V290" fill="none" style="stroke:var(--ink3)" stroke-width="1.6"/>',
+        _box(420, 60, 210, 52, "Regex", "hand-written patterns", "regex"),
+        _box(420, 124, 210, 52, "Presidio", "spaCy NER + MRN rule", "presidio"),
+        _box(420, 188, 210, 52, "Local LLM", "Ollama · returns text + type", "llm"),
+        _box(420, 264, 210, 52, "LLM rewrite", "Ollama · returns whole note", "llm_rewrite"),
+        _arrow("M390,86 H418"),
+        _arrow("M390,150 H418"),
+        _arrow("M390,214 H418"),
+        _arrow("M390,290 H418"),
+        '<text x="300" y="214" text-anchor="middle" font-size="11" style="fill:var(--ink2)">same text</text>',
+        '<text x="300" y="229" text-anchor="middle" font-size="11" style="fill:var(--ink2)">to every method</text>',
+        # Span handling: code does the redacting.
+        '<rect x="670" y="60" width="150" height="180" rx="10" '
+        'style="fill:var(--card);stroke:var(--line);stroke-width:1.5"/>',
+        '<text x="745" y="128" text-anchor="middle" font-size="13" font-weight="650" '
+        'fill="currentColor">Code redacts</text>',
+        '<text x="745" y="152" text-anchor="middle" font-size="11" style="fill:var(--ink2)">find positions</text>',
+        '<text x="745" y="168" text-anchor="middle" font-size="11" style="fill:var(--ink2)">merge overlaps</text>',
+        '<text x="745" y="184" text-anchor="middle" font-size="11" style="fill:var(--ink2)">replace with [TAG]</text>',
+        _arrow("M630,86 H668", "spans", 650, 79),
+        _arrow("M630,150 H668", "spans", 650, 143),
+        _arrow("M630,214 H668", "text", 650, 207),
+        # Scoring.
+        _box(860, 96, 160, 60, "Detection score", "precision · recall · F1"),
+        _box(860, 244, 160, 66, "Integrity check", "what else changed"),
+        _arrow("M820,126 H858", "spans", 840, 119),
+        _arrow("M745,240 V262 H858", "redacted note", 800, 256),
+        _arrow("M630,292 H858", "rewritten note · no positions", 745, 304),
+        # The answer key bypasses every method.
+        _arrow(
+            "M360,338 H1050 V126 H1022",
+            "answer key: used for scoring only, never shown to a method",
+            705,
+            330,
+            accent=True,
+        ),
+        _arrow("M1050,277 H1022", accent=True),
+    ]
+    claim = (
+        "Pipeline: a generator writes note text and an answer key. All four methods get only the "
+        "text. Regex and Presidio return positions; the local LLM returns identifier text, which "
+        "code locates and redacts; the rewrite variant returns a whole note. The answer key goes "
+        "straight to scoring. Everything runs on one laptop."
+    )
+    return (
+        f'<svg viewBox="0 0 1100 390" role="img" aria-label="{_e(claim)}" '
+        'style="width:100%;height:auto;display:block;color:var(--ink);font-family:inherit">'
+        + "".join(parts)
+        + "</svg>"
+    )
+
+
+def design_section() -> str:
+    return f"""
+<section id="design">
+  <div class="num">03 · HOW IT WORKS</div>
+  <h2>System design</h2>
+  <p class="takeaway">Every method gets the same note text and nothing else. The answer key goes
+  straight to scoring, and every step runs on the same machine.</p>
+  <figure class="card diagram">
+    <div class="scroll-x"><div class="diagram-inner">{pipeline_diagram()}</div></div>
+    <figcaption>The local LLM is never trusted with character positions: it names each
+    identifier and its type, and code finds and removes it. The rewrite variant hands the whole
+    note to the model, so the only way to check it is to compare its text with the original.</figcaption>
+  </figure>
+</section>"""
+
+
 def accuracy_section(res: dict) -> str:
     ov, rt = res["overall"], res["runtime"]
     R, L = ov["regex"]["overlap"], ov["llm"]["overlap"]
@@ -288,7 +417,7 @@ def accuracy_section(res: dict) -> str:
     )
     return f"""
 <section id="accuracy">
-  <div class="num">03 · ACCURACY</div>
+  <div class="num">04 · ACCURACY</div>
   <h2>How much each method removes</h2>
   <p class="takeaway">Regex is the most precise ({pct(R["precision"])}) but removes only
   {pct(R["recall"])} of identifiers. Presidio and the local LLM each remove about
@@ -340,7 +469,7 @@ def blind_spots_section(res: dict) -> str:
     )
     return f"""
 <section id="blind-spots">
-  <div class="num">04 · BLIND SPOTS</div>
+  <div class="num">05 · BLIND SPOTS</div>
   <h2>Where each method misses</h2>
   <p class="takeaway">Each method has a different blind spot, which the overall score hides.
   Read across a row to see who handles each identifier type.</p>
@@ -383,7 +512,7 @@ def consistency_section(res: dict) -> str:
     )
     return f"""
 <section id="consistency">
-  <div class="num">05 · CONSISTENCY</div>
+  <div class="num">06 · CONSISTENCY</div>
   <h2>Does the LLM give the same answer twice?</h2>
   <p class="takeaway">No. Each note was run three times with the model's default settings, and
   only {c["identical_notes"]} of {c["n_notes"]} came out the same every time. It never crashed,
@@ -435,7 +564,7 @@ def side_effects_section(res: dict) -> str:
     )  # fmt: skip
     return f"""
 <section id="side-effects">
-  <div class="num">06 · SIDE EFFECTS</div>
+  <div class="num">07 · SIDE EFFECTS</div>
   <h2>What else gets changed</h2>
   <p class="takeaway">Every method removes some text that isn't an identifier, like “daily”, a dose
   or an age. Methods that mark spans only ever delete; asking the LLM to rewrite the note also
@@ -453,7 +582,7 @@ def side_effects_section(res: dict) -> str:
 def examples_section(n_notes: int) -> str:
     return f"""
 <section id="examples">
-  <div class="num">07 · EXAMPLES</div>
+  <div class="num">08 · EXAMPLES</div>
   <h2>See it on a note</h2>
   <p class="takeaway">Pick any of the {n_notes} notes and compare the original with each
   method's output.</p>
@@ -465,7 +594,7 @@ def method_section(res: dict) -> str:
     model = OllamaConfig().model
     return f"""
 <section id="method">
-  <div class="num">08 · METHOD</div>
+  <div class="num">09 · METHOD</div>
   <h2>How this was measured</h2>
   <div class="cols">
     <div class="card"><h3 style="margin-bottom:8px">Setup</h3><ul>
@@ -566,7 +695,7 @@ def _json_for_script(data: dict) -> str:
 
 
 NAV = [
-    ("summary", "Summary"), ("input", "The input"), ("accuracy", "Accuracy"), ("blind-spots", "Blind spots"),
+    ("summary", "Summary"), ("input", "The input"), ("design", "How it works"), ("accuracy", "Accuracy"), ("blind-spots", "Blind spots"),
     ("consistency", "Consistency"), ("side-effects", "Side effects"), ("examples", "Examples"),
     ("method", "Method"),
 ]  # fmt: skip
@@ -584,6 +713,7 @@ def build() -> str:
         [
             summary_section(res),
             input_section(notes),
+            design_section(),
             accuracy_section(res),
             blind_spots_section(res),
             consistency_section(res),

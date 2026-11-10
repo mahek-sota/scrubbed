@@ -181,6 +181,10 @@ mark.miss { background: var(--miss); color: var(--miss-ink); border-radius: 3px;
 .trap { text-decoration: underline dotted 2px var(--ink3); text-underline-offset: 3px; }
 .key-legend { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 12px; color: var(--ink2); margin-top: 12px; }
 
+.diagram { margin: 0 0 16px; }
+.diagram-inner { min-width: 760px; }
+.diagram figcaption { font-size: 14px; color: var(--ink2); margin-top: 12px; max-width: 75ch; }
+
 /* Method section */
 .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 @media (max-width: 760px) { .cols { grid-template-columns: 1fr; } }

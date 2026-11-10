@@ -186,6 +186,10 @@ mark.miss { background: var(--miss); color: var(--miss-ink); border-radius: 3px;
 .trap { text-decoration: underline dotted 2px var(--ink3); text-underline-offset: 3px; }
 .key-legend { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 12px; color: var(--ink2); margin-top: 12px; }
 
+.diagram { margin: 0 0 16px; }
+.diagram-inner { min-width: 760px; }
+.diagram figcaption { font-size: 14px; color: var(--ink2); margin-top: 12px; max-width: 75ch; }
+
 /* Method section */
 .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 @media (max-width: 760px) { .cols { grid-template-columns: 1fr; } }
@@ -208,7 +212,7 @@ footer { padding: 40px 0 64px; font-size: 13px; color: var(--ink3); }
   <div class="facts"><span><b>200</b> notes</span><span><b>2,803</b> identifiers</span>
   <span><b>11</b> identifier types</span><span><b>3</b> methods</span><span>model <b>qwen2.5:7b-instruct</b></span></div>
 </div></header>
-<nav class="toc" aria-label="Sections"><div class="wrap"><a href="#summary">Summary</a><a href="#input">The input</a><a href="#accuracy">Accuracy</a><a href="#blind-spots">Blind spots</a><a href="#consistency">Consistency</a><a href="#side-effects">Side effects</a><a href="#examples">Examples</a><a href="#method">Method</a></div></nav>
+<nav class="toc" aria-label="Sections"><div class="wrap"><a href="#summary">Summary</a><a href="#input">The input</a><a href="#design">How it works</a><a href="#accuracy">Accuracy</a><a href="#blind-spots">Blind spots</a><a href="#consistency">Consistency</a><a href="#side-effects">Side effects</a><a href="#examples">Examples</a><a href="#method">Method</a></div></nav>
 <main class="wrap">
 <section id="summary">
   <div class="num">01 · SUMMARY</div>
@@ -276,8 +280,20 @@ Dr. <span class="tag">[NAME]</span>
     <details><summary>Show the answer key for this note</summary><p class="card-sub" style="margin-top:8px">Every identifier was recorded with its exact position while the note was generated, so the answer key is correct by construction. Stored as JSON, e.g. <code>{&quot;start&quot;: 0, &quot;end&quot;: 23, &quot;text&quot;: &quot;Tucson General Hospital&quot;, &quot;category&quot;: &quot;HOSPITAL&quot;}</code>. First 8 of 20:</p><div class="tw"><table><thead><tr><th>Text</th><th>Type</th><th>Characters</th><th>Role / format</th></tr></thead><tbody><tr><td>Tucson General Hospital</td><td>HOSPITAL</td><td>0–23</td><td></td></tr><tr><td>24-Aug-2019</td><td>DATE</td><td>24–35</td><td>visit</td></tr><tr><td>Grace Bryan</td><td>NAME</td><td>37–48</td><td>clinician</td></tr><tr><td>Austin Memorial Hospital</td><td>HOSPITAL</td><td>76–100</td><td></td></tr><tr><td>Dawn Dominguez</td><td>NAME</td><td>106–120</td><td>patient</td></tr><tr><td>14-Jan-1918</td><td>DATE</td><td>126–137</td><td>dob</td></tr><tr><td>42044510</td><td>MRN</td><td>144–152</td><td>labeled</td></tr><tr><td>29970 Barnes Way Apt. 508</td><td>ADDRESS</td><td>162–187</td><td></td></tr></tbody></table></div></details>
   </div>
 </section>
+<section id="design">
+  <div class="num">03 · HOW IT WORKS</div>
+  <h2>System design</h2>
+  <p class="takeaway">Every method gets the same note text and nothing else. The answer key goes
+  straight to scoring, and every step runs on the same machine.</p>
+  <figure class="card diagram">
+    <div class="scroll-x"><div class="diagram-inner"><svg viewBox="0 0 1100 390" role="img" aria-label="Pipeline: a generator writes note text and an answer key. All four methods get only the text. Regex and Presidio return positions; the local LLM returns identifier text, which code locates and redacts; the rewrite variant returns a whole note. The answer key goes straight to scoring. Everything runs on one laptop." style="width:100%;height:auto;display:block;color:var(--ink);font-family:inherit"><defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--ink3)"/></marker><marker id="arr-accent" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--accent)"/></marker></defs><rect x="10" y="10" width="1080" height="370" rx="16" fill="none" style="stroke:var(--ink3)" stroke-width="1.2" stroke-dasharray="6 5"/><text x="30" y="36" font-size="12" font-weight="600" letter-spacing=".04em" style="fill:var(--ink3)">ONE LAPTOP · NO NETWORK CALLS</text><rect x="30" y="180" width="150" height="84" rx="10" style="fill:var(--card);stroke:var(--line);stroke-width:1.5"/><text x="105.0" y="215.0" text-anchor="middle" font-size="13" font-weight="650" fill="currentColor">Note generator</text><text x="105.0" y="232.0" text-anchor="middle" font-size="11" style="fill:var(--ink2)">Faker + 6 templates</text><rect x="220" y="100" width="140" height="56" rx="10" style="fill:var(--card);stroke:var(--line);stroke-width:1.5"/><text x="290.0" y="121.0" text-anchor="middle" font-size="13" font-weight="650" fill="currentColor">Note text</text><text x="290.0" y="138.0" text-anchor="middle" font-size="11" style="fill:var(--ink2)">200 notes</text><rect x="220" y="310" width="140" height="56" rx="10" style="fill:var(--card);stroke:var(--line);stroke-width:1.5"/><text x="290.0" y="331.0" text-anchor="middle" font-size="13" font-weight="650" fill="currentColor">Answer key</text><text x="290.0" y="348.0" text-anchor="middle" font-size="11" style="fill:var(--ink2)">2,803 positions</text><path d="M180,210 H198 V128 H218" fill="none" style="stroke:var(--ink3)" stroke-width="1.6" marker-end="url(#arr)"/><path d="M180,234 H198 V338 H218" fill="none" style="stroke:var(--ink3)" stroke-width="1.6" marker-end="url(#arr)"/><path d="M360,128 H390 M390,86 V290" fill="none" style="stroke:var(--ink3)" stroke-width="1.6"/><rect x="420" y="60" width="210" height="52" rx="10" style="fill:var(--card);stroke:var(--line);stroke-width:1.5"/><rect x="420" y="70" width="4" height="32" rx="2" style="fill:var(--c-regex)"/><text x="525.0" y="79.0" text-anchor="middle" font-size="13" font-weight="650" fill="currentColor">Regex</text><text x="525.0" y="96.0" text-anchor="middle" font-size="11" style="fill:var(--ink2)">hand-written patterns</text><rect x="420" y="124" width="210" height="52" rx="10" style="fill:var(--card);stroke:var(--line);stroke-width:1.5"/><rect x="420" y="134" width="4" height="32" rx="2" style="fill:var(--c-presidio)"/><text x="525.0" y="143.0" text-anchor="middle" font-size="13" font-weight="650" fill="currentColor">Presidio</text><text x="525.0" y="160.0" text-anchor="middle" font-size="11" style="fill:var(--ink2)">spaCy NER + MRN rule</text><rect x="420" y="188" width="210" height="52" rx="10" style="fill:var(--card);stroke:var(--line);stroke-width:1.5"/><rect x="420" y="198" width="4" height="32" rx="2" style="fill:var(--c-llm)"/><text x="525.0" y="207.0" text-anchor="middle" font-size="13" font-weight="650" fill="currentColor">Local LLM</text><text x="525.0" y="224.0" text-anchor="middle" font-size="11" style="fill:var(--ink2)">Ollama · returns text + type</text><rect x="420" y="264" width="210" height="52" rx="10" style="fill:var(--card);stroke:var(--line);stroke-width:1.5"/><rect x="420" y="274" width="4" height="32" rx="2" style="fill:var(--c-llm_rewrite)"/><text x="525.0" y="283.0" text-anchor="middle" font-size="13" font-weight="650" fill="currentColor">LLM rewrite</text><text x="525.0" y="300.0" text-anchor="middle" font-size="11" style="fill:var(--ink2)">Ollama · returns whole note</text><path d="M390,86 H418" fill="none" style="stroke:var(--ink3)" stroke-width="1.6" marker-end="url(#arr)"/><path d="M390,150 H418" fill="none" style="stroke:var(--ink3)" stroke-width="1.6" marker-end="url(#arr)"/><path d="M390,214 H418" fill="none" style="stroke:var(--ink3)" stroke-width="1.6" marker-end="url(#arr)"/><path d="M390,290 H418" fill="none" style="stroke:var(--ink3)" stroke-width="1.6" marker-end="url(#arr)"/><text x="300" y="214" text-anchor="middle" font-size="11" style="fill:var(--ink2)">same text</text><text x="300" y="229" text-anchor="middle" font-size="11" style="fill:var(--ink2)">to every method</text><rect x="670" y="60" width="150" height="180" rx="10" style="fill:var(--card);stroke:var(--line);stroke-width:1.5"/><text x="745" y="128" text-anchor="middle" font-size="13" font-weight="650" fill="currentColor">Code redacts</text><text x="745" y="152" text-anchor="middle" font-size="11" style="fill:var(--ink2)">find positions</text><text x="745" y="168" text-anchor="middle" font-size="11" style="fill:var(--ink2)">merge overlaps</text><text x="745" y="184" text-anchor="middle" font-size="11" style="fill:var(--ink2)">replace with [TAG]</text><path d="M630,86 H668" fill="none" style="stroke:var(--ink3)" stroke-width="1.6" marker-end="url(#arr)"/><text x="650" y="79" text-anchor="middle" font-size="11" style="fill:var(--ink2)">spans</text><path d="M630,150 H668" fill="none" style="stroke:var(--ink3)" stroke-width="1.6" marker-end="url(#arr)"/><text x="650" y="143" text-anchor="middle" font-size="11" style="fill:var(--ink2)">spans</text><path d="M630,214 H668" fill="none" style="stroke:var(--ink3)" stroke-width="1.6" marker-end="url(#arr)"/><text x="650" y="207" text-anchor="middle" font-size="11" style="fill:var(--ink2)">text</text><rect x="860" y="96" width="160" height="60" rx="10" style="fill:var(--card);stroke:var(--line);stroke-width:1.5"/><text x="940.0" y="119.0" text-anchor="middle" font-size="13" font-weight="650" fill="currentColor">Detection score</text><text x="940.0" y="136.0" text-anchor="middle" font-size="11" style="fill:var(--ink2)">precision · recall · F1</text><rect x="860" y="244" width="160" height="66" rx="10" style="fill:var(--card);stroke:var(--line);stroke-width:1.5"/><text x="940.0" y="270.0" text-anchor="middle" font-size="13" font-weight="650" fill="currentColor">Integrity check</text><text x="940.0" y="287.0" text-anchor="middle" font-size="11" style="fill:var(--ink2)">what else changed</text><path d="M820,126 H858" fill="none" style="stroke:var(--ink3)" stroke-width="1.6" marker-end="url(#arr)"/><text x="840" y="119" text-anchor="middle" font-size="11" style="fill:var(--ink2)">spans</text><path d="M745,240 V262 H858" fill="none" style="stroke:var(--ink3)" stroke-width="1.6" marker-end="url(#arr)"/><text x="800" y="256" text-anchor="middle" font-size="11" style="fill:var(--ink2)">redacted note</text><path d="M630,292 H858" fill="none" style="stroke:var(--ink3)" stroke-width="1.6" marker-end="url(#arr)"/><text x="745" y="304" text-anchor="middle" font-size="11" style="fill:var(--ink2)">rewritten note · no positions</text><path d="M360,338 H1050 V126 H1022" fill="none" style="stroke:var(--accent)" stroke-width="1.6" marker-end="url(#arr-accent)"/><text x="705" y="330" text-anchor="middle" font-size="11" font-weight="600" style="fill:var(--accent)">answer key: used for scoring only, never shown to a method</text><path d="M1050,277 H1022" fill="none" style="stroke:var(--accent)" stroke-width="1.6" marker-end="url(#arr-accent)"/></svg></div></div>
+    <figcaption>The local LLM is never trusted with character positions: it names each
+    identifier and its type, and code finds and removes it. The rewrite variant hands the whole
+    note to the model, so the only way to check it is to compare its text with the original.</figcaption>
+  </figure>
+</section>
 <section id="accuracy">
-  <div class="num">03 · ACCURACY</div>
+  <div class="num">04 · ACCURACY</div>
   <h2>How much each method removes</h2>
   <p class="takeaway">Regex is the most precise (97%) but removes only
   43% of identifiers. Presidio and the local LLM each remove about
@@ -292,7 +308,7 @@ Dr. <span class="tag">[NAME]</span>
   </div>
 </section>
 <section id="blind-spots">
-  <div class="num">04 · BLIND SPOTS</div>
+  <div class="num">05 · BLIND SPOTS</div>
   <h2>Where each method misses</h2>
   <p class="takeaway">Each method has a different blind spot, which the overall score hides.
   Read across a row to see who handles each identifier type.</p>
@@ -321,7 +337,7 @@ Dr. <span class="tag">[NAME]</span>
   </div>
 </section>
 <section id="consistency">
-  <div class="num">05 · CONSISTENCY</div>
+  <div class="num">06 · CONSISTENCY</div>
   <h2>Does the LLM give the same answer twice?</h2>
   <p class="takeaway">No. Each note was run three times with the model's default settings, and
   only 17 of 200 came out the same every time. It never crashed,
@@ -334,7 +350,7 @@ Dr. <span class="tag">[NAME]</span>
   </div>
 </section>
 <section id="side-effects">
-  <div class="num">06 · SIDE EFFECTS</div>
+  <div class="num">07 · SIDE EFFECTS</div>
   <h2>What else gets changed</h2>
   <p class="takeaway">Every method removes some text that isn't an identifier, like “daily”, a dose
   or an age. Methods that mark spans only ever delete; asking the LLM to rewrite the note also
@@ -354,14 +370,14 @@ Dr. <span class="tag">[NAME]</span>
   </div>
 </section>
 <section id="examples">
-  <div class="num">07 · EXAMPLES</div>
+  <div class="num">08 · EXAMPLES</div>
   <h2>See it on a note</h2>
   <p class="takeaway">Pick any of the 200 notes and compare the original with each
   method's output.</p>
   <div class="card"><div id="ex-viewer"></div></div>
 </section>
 <section id="method">
-  <div class="num">08 · METHOD</div>
+  <div class="num">09 · METHOD</div>
   <h2>How this was measured</h2>
   <div class="cols">
     <div class="card"><h3 style="margin-bottom:8px">Setup</h3><ul>
